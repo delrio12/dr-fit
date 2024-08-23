@@ -15,7 +15,6 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
 
   const paginate = (e, value) => {
     setCurrentPage(value);
-
     window.scrollTo({ top: 1800, behavior: 'smooth'});
   }
 
@@ -23,9 +22,9 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
     const fetchExercisesData = async () => {
       let exercisesData = [];
       if(bodyPart === 'all') {
-        exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+        exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=1500', exerciseOptions);
       } else {
-        exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
+        exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}?limit=1500`, exerciseOptions);
       }
       setExercises(exercisesData);
     }
@@ -53,7 +52,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
                 <Pagination
                     color='standard'
                     shape='rounded'
-                    defaultPage={1}
+                    defaultPage={4}
                     count={ Math.ceil(exercises.length / exercisesPerPage) }
                     page= { currentPage }
                     onChange= { paginate }
