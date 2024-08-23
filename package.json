@@ -2,7 +2,12 @@
   "name": "dr-fit",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://delrio12.github.io/dr-fit",
   "dependencies": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.7",
