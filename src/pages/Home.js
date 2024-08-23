@@ -6,8 +6,8 @@ import SearchExercises from '../components/SearchExercises';
 
 const Home = () => {
   
-  const [bodyPart, setBodyPart] = useState(['all']);
   const [exercises, setExercises] = useState([]);
+  const [bodyPart, setBodyPart] = useState(['all']);
 
   console.log(bodyPart);
   return (
@@ -24,7 +24,7 @@ const Home = () => {
         bodyPart={bodyPart}
       />
     </Box>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
