@@ -6,6 +6,7 @@ import HorizontalScrollbar from './HorizontalScrollbar';
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart}) => {
   const [search, setSearch] = useState('');
   const [bodyParts, setBodyParts] = useState([]);
+  
 
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -19,18 +20,19 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart}) => {
 
   const handleSearch = async () => {
     if(search) {
-      const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions); //this is from the url provided by RapidAPI in the code snippet part (Nodejs)
+      //change to page 1 !!
+      const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=1500', exerciseOptions); //this is from the url provided by RapidAPI in the code snippet part (Nodejs)
       //look for the exercises by name, target, equipment and body part.
-      const SearchedExercises = exercisesData.filter( 
+      const searchedExercises = exercisesData.filter( 
       (item) => item.name.toLowerCase().includes(search)
       || item.target.toLowerCase().includes(search)
       || item.equipment.toLowerCase().includes(search)
-      || item.bodyPart.toLowerCase().includes(search)
+      || item.bodyPart.toLowerCase().includes(search),
       );
       window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
 
-      setSearch(' ');
-      setExercises(SearchedExercises);
+      setSearch('');
+      setExercises(searchedExercises);
     }
 
   };

@@ -13,7 +13,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
   const currentExercises = Array.isArray(exercises) ? exercises.slice(indexOfFirstExercise, indexOfLastExercise) : [];
 
-  const paginate = (e, value) => {
+  const handlePageChange = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 1800, behavior: 'smooth'});
   }
@@ -27,6 +27,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
         exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}?limit=1500`, exerciseOptions);
       }
       setExercises(exercisesData);
+      setCurrentPage(1);
     }
 
     fetchExercisesData();
@@ -50,13 +51,13 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
       <Stack sx={{ mt: { lg: '114px', xs: '70px' } }} alignItems='center'>
             {exercises.length > 9 && (
                 <Pagination
-                    color='standard'
-                    shape='rounded'
-                    defaultPage={4}
-                    count={ Math.ceil(exercises.length / exercisesPerPage) }
-                    page= { currentPage }
-                    onChange= { paginate }
-                    size='large' />  
+                    color = 'standard'
+                    shape = 'circular'
+                    defaultPage = { 1 }
+                    count = { Math.ceil(exercises.length / exercisesPerPage) }
+                    page = { currentPage }
+                    onChange = { handlePageChange }
+                    size = 'large' />  
             )}
         </Stack>
     </Box>
@@ -65,6 +66,3 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
 
 export default Exercises;
 
-
-// This goes under Typography and its 1:22:00
-/*  */ 
