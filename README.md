@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Tools I Used for this project
+
+- Material UI for the user interface.
+- ExerciseDB: fetched exercises images from this API.
+- Youtube Search and download: API used for suggesting videos in the exercises section.
+
 ## Available Scripts
 
 In the project directory, you can run:
